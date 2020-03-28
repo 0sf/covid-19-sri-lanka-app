@@ -23,7 +23,7 @@ class Item extends StatelessWidget {
         ),
         Text(title,
             style: TextStyle(
-                fontSize: 40,
+                fontSize: 35,
                 color: Colors.white,
                 fontWeight: FontWeight.w700)),
         Text(subtitle,

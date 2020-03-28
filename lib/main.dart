@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
           ),
           heroTag: "demoTag",
         ),
-        body: SafeArea(
+        body: SingleChildScrollView(
           child: Container(
               padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
               child: Column(children: [
@@ -114,6 +114,7 @@ class _MyAppState extends State<MyApp> {
                               color: Colors.black,
                               fontWeight: FontWeight.w200)),
                     ]),
+                    
                 FutureBuilder<NewState>(
                   future: stat,
                   builder: (context, snapshot) {
@@ -233,14 +234,14 @@ class _MyAppState extends State<MyApp> {
                               text: TextSpan(
                                   text: 'A social service by ',
                                   style: TextStyle(
-                                      fontSize: 16,
+                                      fontSize: 13,
                                       color: Colors.black,
                                       fontWeight: FontWeight.w300),
                                   children: [
                                     TextSpan(
-                                      text: '0sf', // & kiwiyaaa',
+                                      text: '0sf',
                                       style: TextStyle(
-                                          fontSize: 16,
+                                          fontSize: 13,
                                           color: Colors.blue,
                                           fontWeight: FontWeight.w500),
                                       recognizer: new TapGestureRecognizer()
@@ -251,19 +252,19 @@ class _MyAppState extends State<MyApp> {
                                     TextSpan(
                                       text: ' & ',
                                       style: TextStyle(
-                                          fontSize: 16,
+                                          fontSize: 13,
                                       color: Colors.black,
                                       fontWeight: FontWeight.w300),
                                     ),
                                     TextSpan(
-                                      text: 'kiwiyaaa',
+                                      text: 'kiwi',
                                       style: TextStyle(
-                                          fontSize: 16,
+                                          fontSize: 13,
                                           color: Colors.blue,
                                           fontWeight: FontWeight.w500),
                                       recognizer: new TapGestureRecognizer()
                                         ..onTap = () {
-                                          launch('https://github.com/kiwiyaaa');
+                                          launch('https://github.com/kiwizu3');
                                         },
                                     )
                                   ]),
