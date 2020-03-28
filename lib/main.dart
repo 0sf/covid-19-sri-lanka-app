@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
           ),
           heroTag: "demoTag",
         ),
-        body: SafeArea(
+        body: SingleChildScrollView(
           child: Container(
               padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
               child: Column(children: [
@@ -114,6 +114,7 @@ class _MyAppState extends State<MyApp> {
                               color: Colors.black,
                               fontWeight: FontWeight.w200)),
                     ]),
+                    
                 FutureBuilder<NewState>(
                   future: stat,
                   builder: (context, snapshot) {
