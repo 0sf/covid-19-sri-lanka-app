@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 Future<NewState> fetchAlbum() async {
   final response =
-      await  http.get('https://hpb.health.gov.lk/api/get-current-statistical');
+      await http.get('https://hpb.health.gov.lk/api/get-current-statistical');
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -19,26 +19,49 @@ Future<NewState> fetchAlbum() async {
 
 class Data {
   final int newCases;
-  final int totCases;
-  final String updateDateTime;
+  final int activeCases;
+  final int totLocalCases;
   final int localDeaths;
   final int localRecovered;
+  final int inHospital;
+
+  final int totGlobalCases;
+  final int globalNewCases;
+  final int globalDeaths;
+  final int globalNewDeaths;
+  final int globalRecovered;
+
+  final String updateTime;
 
   Data({
     this.newCases,
-    this.totCases,
-    this.updateDateTime,
+    this.activeCases,
+    this.totLocalCases,
     this.localDeaths,
     this.localRecovered,
+    this.inHospital,
+    this.globalNewCases,
+    this.globalDeaths,
+    this.globalNewDeaths,
+    this.totGlobalCases,
+    this.globalRecovered,
+    this.updateTime,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) {
     return Data(
       newCases: json['local_new_cases'],
-      totCases: json['local_total_cases'],
-      updateDateTime: json['update_date_time'],
+      activeCases: json['local_active_cases'],
+      totLocalCases: json['local_total_cases'],
       localDeaths: json['local_deaths'],
       localRecovered: json['local_recovered'],
+      inHospital: json['local_total_number_of_individuals_in_hospitals'],
+      globalNewCases: json['global_new_cases'],
+      globalDeaths: json['global_deaths'],
+      globalNewDeaths: json['global_new_deaths'],
+      totGlobalCases: json['global_total_cases'],
+      globalRecovered: json['global_recovered'],
+      updateTime: json['update_date_time'],
     );
   }
 }
