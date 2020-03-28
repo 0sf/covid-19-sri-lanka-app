@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'services.dart';
 import 'item.dart';
+
+import 'package:flutter/gestures.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 // import 'style.dart';
 
 void main() => runApp(MyApp());
@@ -27,7 +31,7 @@ class _MyAppState extends State<MyApp> {
 
   bool isSwitched = false;
   bool showMenu = false;
-  
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -35,6 +39,7 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitDown,
     ]);
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'covid-19 status sri lanka',
       home: Scaffold(
         floatingActionButton: FloatingActionButton(
@@ -118,29 +123,39 @@ class _MyAppState extends State<MyApp> {
                         runSpacing: 17,
                         children: [
                           Item(
-                              title:
-                                  snapshot.data.data.totLocalCases.toString().replaceAllMapped(reg, mathFunc),
+                              title: snapshot.data.data.totLocalCases
+                                  .toString()
+                                  .replaceAllMapped(reg, mathFunc),
                               subtitle: "Total Cases",
                               color: 0xffFED525),
                           Item(
-                              title: snapshot.data.data.activeCases.toString().replaceAllMapped(reg, mathFunc),
+                              title: snapshot.data.data.activeCases
+                                  .toString()
+                                  .replaceAllMapped(reg, mathFunc),
                               subtitle: "Active Cases",
                               color: 0xffF54A8E),
                           Item(
-                              title: snapshot.data.data.newCases.toString().replaceAllMapped(reg, mathFunc),
+                              title: snapshot.data.data.newCases
+                                  .toString()
+                                  .replaceAllMapped(reg, mathFunc),
                               subtitle: "New Cases",
                               color: 0xff6F52F8),
                           Item(
-                              title:
-                                  snapshot.data.data.localRecovered.toString().replaceAllMapped(reg, mathFunc),
+                              title: snapshot.data.data.localRecovered
+                                  .toString()
+                                  .replaceAllMapped(reg, mathFunc),
                               subtitle: "Recovered",
                               color: 0xff56CA8D),
                           Item(
-                              title: snapshot.data.data.inHospital.toString().replaceAllMapped(reg, mathFunc),
+                              title: snapshot.data.data.inHospital
+                                  .toString()
+                                  .replaceAllMapped(reg, mathFunc),
                               subtitle: "In Hospital",
                               color: 0xff33A3EA),
                           Item(
-                              title: snapshot.data.data.localDeaths.toString().replaceAllMapped(reg, mathFunc),
+                              title: snapshot.data.data.localDeaths
+                                  .toString()
+                                  .replaceAllMapped(reg, mathFunc),
                               subtitle: "Total Deaths",
                               color: 0xffEA3347),
                         ],
@@ -152,27 +167,33 @@ class _MyAppState extends State<MyApp> {
                         runSpacing: 17,
                         children: [
                           Item(
-                              title:
-                                  snapshot.data.data.totGlobalCases.toString().replaceAllMapped(reg, mathFunc),
+                              title: snapshot.data.data.totGlobalCases
+                                  .toString()
+                                  .replaceAllMapped(reg, mathFunc),
                               subtitle: "Total Cases",
                               color: 0xffFED525),
                           Item(
-                              title:
-                                  snapshot.data.data.globalNewDeaths.toString().replaceAllMapped(reg, mathFunc),
+                              title: snapshot.data.data.globalNewDeaths
+                                  .toString()
+                                  .replaceAllMapped(reg, mathFunc),
                               subtitle: "New Deaths",
                               color: 0xffF54A8E),
                           Item(
-                              title:
-                                  snapshot.data.data.globalNewCases.toString().replaceAllMapped(reg, mathFunc),
+                              title: snapshot.data.data.globalNewCases
+                                  .toString()
+                                  .replaceAllMapped(reg, mathFunc),
                               subtitle: "New Cases",
                               color: 0xff33A3EA),
                           Item(
-                              title:
-                                  snapshot.data.data.globalRecovered.toString().replaceAllMapped(reg, mathFunc),
+                              title: snapshot.data.data.globalRecovered
+                                  .toString()
+                                  .replaceAllMapped(reg, mathFunc),
                               subtitle: "Recovered",
                               color: 0xff56CA8D),
                           Item(
-                              title: snapshot.data.data.globalDeaths.toString().replaceAllMapped(reg, mathFunc),
+                              title: snapshot.data.data.globalDeaths
+                                  .toString()
+                                  .replaceAllMapped(reg, mathFunc),
                               subtitle: "Total Deaths",
                               color: 0xffEA3347),
                         ],
@@ -208,16 +229,45 @@ class _MyAppState extends State<MyApp> {
                               child: Image.asset('assets/images/logo_who.png',
                                   width: 150.0),
                             ),
-                            Text('A social service by ',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w300)),
-                            Text('0sf & kiwiyaaa',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.blue,
-                                    fontWeight: FontWeight.w500)),
+                            RichText(
+                              text: TextSpan(
+                                  text: 'A social service by ',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w300),
+                                  children: [
+                                    TextSpan(
+                                      text: '0sf', // & kiwiyaaa',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.blue,
+                                          fontWeight: FontWeight.w500),
+                                      recognizer: new TapGestureRecognizer()
+                                        ..onTap = () {
+                                          launch('https://github.com/0sf');
+                                        },
+                                    ),
+                                    TextSpan(
+                                      text: ' & ',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w300),
+                                    ),
+                                    TextSpan(
+                                      text: 'kiwiyaaa',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.blue,
+                                          fontWeight: FontWeight.w500),
+                                      recognizer: new TapGestureRecognizer()
+                                        ..onTap = () {
+                                          launch('https://github.com/kiwiyaaa');
+                                        },
+                                    )
+                                  ]),
+                            ),
                           ],
                         ),
                         // actions: <Widget>[
