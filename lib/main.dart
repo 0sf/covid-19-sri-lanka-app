@@ -213,20 +213,20 @@ class _MyAppState extends State<MyApp> {
                                     fontSize: 16,
                                     color: Colors.black,
                                     fontWeight: FontWeight.w300)),
-                            Text('A social service by ',
+                            Text('0sf & kiwiyaaa',
                                 style: TextStyle(
                                     fontSize: 16,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w300)),
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.w500)),
                           ],
                         ),
-                        actions: <Widget>[
-                          MaterialButton(
-                            elevation: 5.0,
-                            child: Text('click'),
-                            onPressed: () {},
-                          )
-                        ],
+                        // actions: <Widget>[
+                        //   MaterialButton(
+                        //     elevation: 5.0,
+                        //     child: Text('click'),
+                        //     onPressed: () {},
+                        //   )
+                        // ],
                       );
                     } else if (snapshot.hasError) {
                       return Text("${snapshot.error}");
