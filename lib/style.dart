@@ -8,14 +8,14 @@ const String FontNameDefault = "LucidaGrande";
 
 const AppBarStyle = TextStyle(
   fontFamily: FontNameDefault,
-  fontWeight: FontWeight.w300,
-  fontSize: MediumTextSize,
+  fontWeight: FontWeight.w600,
+  fontSize: 30,
   color: Colors.white,
 );
 
 const TitleTextStyle = TextStyle(
   fontFamily: FontNameDefault,
-  fontWeight: FontWeight.w300,
+  fontWeight: FontWeight.w600,
   fontSize: LargeTextSize,
   color: Colors.black,
 );
