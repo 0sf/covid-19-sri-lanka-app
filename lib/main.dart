@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'services.dart';
 import 'item.dart';
-
-import 'package:flutter/gestures.dart';
-import 'package:url_launcher/url_launcher.dart';
-
+import 'alert.dart';
 // import 'style.dart';
 
 void main() => runApp(MyApp());
@@ -57,16 +54,20 @@ class _MyAppState extends State<MyApp> {
           child: Container(
               padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
               child: Column(children: [
-                Text('COVID19',
-                    style: TextStyle(
-                        fontSize: 40,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500)),
-                Text('Situation Report',
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w200)),
+                Text(
+                  'COVID19',
+                  style: TextStyle(
+                      fontSize: 40,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500),
+                ),
+                Text(
+                  'Situation Report',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w200),
+                ),
                 FutureBuilder<NewState>(
                   future: stat,
                   builder: (context, snapshot) {
@@ -75,7 +76,9 @@ class _MyAppState extends State<MyApp> {
                         spacing: 17,
                         runSpacing: 17,
                         children: [
-                          Text(snapshot.data.data.updateTime.toString()),
+                          Text(
+                            snapshot.data.data.updateTime.toString(),
+                          ),
                         ],
                       );
                     } else if (snapshot.hasError) {
@@ -90,11 +93,13 @@ class _MyAppState extends State<MyApp> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text('Local',
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w200)),
+                      Text(
+                        'Local',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w200),
+                      ),
                       Switch(
                         value: isSwitched,
                         onChanged: (value) {
@@ -114,7 +119,6 @@ class _MyAppState extends State<MyApp> {
                               color: Colors.black,
                               fontWeight: FontWeight.w200)),
                     ]),
-                    
                 FutureBuilder<NewState>(
                   future: stat,
                   builder: (context, snapshot) {
@@ -201,84 +205,7 @@ class _MyAppState extends State<MyApp> {
                       );
                     }
                     if (snapshot.hasData && showMenu) {
-                      return AlertDialog(
-                        contentPadding: EdgeInsets.all(30),
-                        title: Text('About',
-                            style: TextStyle(
-                                fontSize: 25,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w700)),
-                        content: Column(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                              child: Text(
-                                  'Get information and guidance from WHO regarding the current outbreak of Corona Virus Disease 2019 (COVID19)',
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w300)),
-                            ),
-                            Divider(),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
-                              child: Image.asset('assets/images/logo_hpb.png',
-                                  width: 250.0),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                              child: Image.asset('assets/images/logo_who.png',
-                                  width: 150.0),
-                            ),
-                            RichText(
-                              text: TextSpan(
-                                  text: 'A social service by ',
-                                  style: TextStyle(
-                                      fontSize: 13,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w300),
-                                  children: [
-                                    TextSpan(
-                                      text: '0sf',
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          color: Colors.blue,
-                                          fontWeight: FontWeight.w500),
-                                      recognizer: new TapGestureRecognizer()
-                                        ..onTap = () {
-                                          launch('https://github.com/0sf');
-                                        },
-                                    ),
-                                    TextSpan(
-                                      text: ' & ',
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w300),
-                                    ),
-                                    TextSpan(
-                                      text: 'kiwi',
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          color: Colors.blue,
-                                          fontWeight: FontWeight.w500),
-                                      recognizer: new TapGestureRecognizer()
-                                        ..onTap = () {
-                                          launch('https://github.com/kiwizu3');
-                                        },
-                                    )
-                                  ]),
-                            ),
-                          ],
-                        ),
-                        // actions: <Widget>[
-                        //   MaterialButton(
-                        //     elevation: 5.0,
-                        //     child: Text('click'),
-                        //     onPressed: () {},
-                        //   )
-                        // ],
-                      );
+                      return AlertInfo();
                     } else if (snapshot.hasError) {
                       return Text("${snapshot.error}");
                     }

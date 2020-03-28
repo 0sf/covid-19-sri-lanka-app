@@ -1,8 +1,8 @@
-/* import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class AlertDialog extends StatelessWidget {
+class AlertInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -34,14 +34,14 @@ class AlertDialog extends StatelessWidget {
             text: TextSpan(
                 text: 'A social service by ',
                 style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 13,
                     color: Colors.black,
                     fontWeight: FontWeight.w300),
                 children: [
                   TextSpan(
                     text: '0sf',
                     style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 13,
                         color: Colors.blue,
                         fontWeight: FontWeight.w500),
                     recognizer: new TapGestureRecognizer()
@@ -52,19 +52,19 @@ class AlertDialog extends StatelessWidget {
                   TextSpan(
                     text: ' & ',
                     style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 13,
                         color: Colors.black,
                         fontWeight: FontWeight.w300),
                   ),
                   TextSpan(
-                    text: 'kiwiyaaa',
+                    text: 'kiwi',
                     style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 13,
                         color: Colors.blue,
                         fontWeight: FontWeight.w500),
                     recognizer: new TapGestureRecognizer()
                       ..onTap = () {
-                        launch('https://github.com/kiwiyaaa');
+                        launch('https://github.com/kiwizu3');
                       },
                   )
                 ]),
@@ -81,4 +81,3 @@ class AlertDialog extends StatelessWidget {
     );
   }
 }
- */
