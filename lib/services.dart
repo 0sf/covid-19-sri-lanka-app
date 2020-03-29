@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 Future<NewState> fetchAlbum() async {
+  print("fetchAlbum");
   final response =
       await http.get('https://hpb.health.gov.lk/api/get-current-statistical');
 

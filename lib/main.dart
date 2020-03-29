@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'services.dart';
@@ -16,11 +17,20 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Future<NewState> stat;
-
+  Timer timer;
+  static const int refreshrate = 30;
   @override
   void initState() {
     super.initState();
     stat = fetchAlbum();
+    const oneSecond = const Duration(seconds: refreshrate;
+    timer =Timer.periodic(oneSecond, (Timer r) => callApi());
+  }
+
+  void callApi() {
+    setState(() {
+      stat = fetchAlbum();
+    });
   }
 
   RegExp reg = new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
@@ -126,7 +136,7 @@ class _MyAppState extends State<MyApp> {
                       return Wrap(
                         spacing: 17,
                         runSpacing: 17,
-                        children: [
+                        children:[
                           Item(
                               title: snapshot.data.data.totLocalCases
                                   .toString()
@@ -152,7 +162,7 @@ class _MyAppState extends State<MyApp> {
                               subtitle: "Recovered",
                               color: 0xff56CA8D),
                           Item(
-                              title: snapshot.data.data.inHospital
+                              title: (snapshot.data.data.inHospital)
                                   .toString()
                                   .replaceAllMapped(reg, mathFunc),
                               subtitle: "In Hospital",
